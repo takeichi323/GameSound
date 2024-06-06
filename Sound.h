@@ -13,7 +13,7 @@ class Sound
    bool InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasterVoice);
 
    //X3DAudioの初期化
-   void InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster);
+   bool InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster);
 
    //エミッタの設定
    void SetupEmitter(X3DAUDIO_EMITTER& emitter);

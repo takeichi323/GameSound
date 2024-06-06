@@ -1,5 +1,7 @@
 #include "Sound.h"
 
+
+
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
 {
 //XAudio2の初期化概要
@@ -29,12 +31,29 @@ bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppM
 	return true;
 }
 
-void InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster)
+bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster)
 {
-	//X3DAudioインスタンスを作成
-	X3DAUDIO_HANDLE x3DInstance;
+	//エラーを返す
+	 HRESULT hr{};
 
+	//X3DAudioインスタンスを作成
+	X3DAUDIO_HANDLE x3dInstance{};
+	X3DAUDIO_HANDLE x3dInstanceMaster{};
+
+	//X3DAudioインスタンスを初期化
+	hr = (X3DAudioInitialize(SPEAKER_STEREO, X3DAUDIO_SPEED_OF_SOUND, x3dInstance));
+	if (FAILED(hr)) {
+		return false;
+	}
+
+	//マスター音源のX3DAudioインスタンスを初期化
+	hr = (X3DAudioInitialize(SPEAKER_STEREO, X3DAUDIO_SPEED_OF_SOUND, x3dInstanceMaster/*エラー候補*/));
+	if (FAILED(hr)) {
+		return false;
+	}
 }
+
+
 
 void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter)
 {
