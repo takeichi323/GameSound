@@ -5,7 +5,7 @@
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
 {
 //XAudio2‚Ì‰Šú‰»ŠT—v
-   https://learn.microsoft.com/ja-jp/windows/win32/xaudio2/how-to--initialize-xaudio2
+ //  https://learn.microsoft.com/ja-jp/windows/win32/xaudio2/how-to--initialize-xaudio2
 
 	//ƒGƒ‰[‚ğ•Ô‚·
 	HRESULT hr{};
