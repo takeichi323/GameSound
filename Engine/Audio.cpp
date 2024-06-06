@@ -33,10 +33,18 @@ namespace Audio
 //初期化
 void Audio::Initialize()
 {
+	//COMライブラリを初期化
 	CoInitializeEx(0, COINIT_MULTITHREADED);
 
-	XAudio2Create(&pXAudio);
+	//XAudio2オブジェクトを生成する　 IXAudio2 オブジェクトへのポインターを返す
+	XAudio2Create(&pXAudio/*XAudio本体*/);
+	// IXAudio2MasteringVoice オブジェクトを生成する   IXAudio2MasteringVoice オブジェクトへのポインターを返す。
 	pXAudio->CreateMasteringVoice(&pMasteringVoice);
+
+	/*行っていること
+	　・COMライブラリの初期化
+	  ・XAudio2オブジェクトを生成→成功したらポインターを返す
+	  ・IXAudio2MasteringVoice オブジェクトを生成→成功したらポインターを返す*/
 
 }
 
