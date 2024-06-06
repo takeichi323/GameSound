@@ -3,7 +3,7 @@
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
 {
 //XAudio2の初期化概要
-https://learn.microsoft.com/ja-jp/windows/win32/xaudio2/how-to--initialize-xaudio2
+   https://learn.microsoft.com/ja-jp/windows/win32/xaudio2/how-to--initialize-xaudio2
 
 	//エラーを返す
 	HRESULT hr{};
@@ -29,12 +29,11 @@ https://learn.microsoft.com/ja-jp/windows/win32/xaudio2/how-to--initialize-xaudi
 	return true;
 }
 
-bool Sound::InitializeX3DAudio(IXAudio2MasteringVoice* pMasterVoice, X3DAUDIO_HANDLE& x3DInstance)
+void InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster)
 {
-	UINT32 nChannels = 0;
-	pMasterVoice->GetChannelMask();
+	//X3DAudioインスタンスを作成
+	X3DAUDIO_HANDLE x3DInstance;
 
-	return false;
 }
 
 void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter)
