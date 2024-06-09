@@ -29,9 +29,13 @@ struct EmitterSettings{
 };
 
 struct ListenerSettings{
+ //リスナー位置xyz
 	X3DAUDIO_VECTOR position;
+ //リスナーの前方方向：方向を表すベクトル
 	X3DAUDIO_VECTOR orientFront;
+ //リスナー上方向
 	X3DAUDIO_VECTOR orientTop;
+ //リスナー速度
 	X3DAUDIO_VECTOR velocity;
 };
 
