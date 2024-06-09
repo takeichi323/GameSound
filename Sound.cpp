@@ -53,29 +53,16 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 	}
 }
 
-
-
-void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter)
+void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter, const EmitterSettings& settings)
 {
-	//Ç∆ÇËÇ†Ç¶Ç∏èëÇ¢ÇƒÇ›ÇÈ
-	emitter.Position = { 10.0f,0.0f,0.0f };
-	emitter.Velocity = { 0.0f,0.0f,0.0f };
-	emitter.ChannelCount = 1;
-	emitter.pChannelAzimuths = nullptr;
-	emitter.InnerRadius = 2.0f;
-	emitter.InnerRadiusAngle = X3DAUDIO_PI / 4.0f;
-	emitter.CurveDistanceScaler = 1.0f;
-	emitter.DopplerScaler = 1.0f;
+
 }
 
-void Sound::SetupListener(X3DAUDIO_LISTENER& listener)
+void Sound::SetupListener(X3DAUDIO_LISTENER& listener, const ListenerSettings& settings)
 {
-	//Ç∆ÇËÇ†Ç¶Ç∏èëÇ¢ÇƒÇ›ÇÈ
-	listener.Position    =  { 0.0f,0.0f,0.0f };
-	listener.OrientFront =  { 0.0f,0.0f,1.0f };
-	listener.OrientTop   =  { 0.0f,1.0f,0.0f };
-	listener.Velocity    =  { 0.0f,0.0f,0.0f };
+
 }
+
 
 void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings)
 {
