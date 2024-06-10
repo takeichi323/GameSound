@@ -2,42 +2,12 @@
 #include<Windows.h>
 #include<x3daudio.h>
 #include<xaudio2.h>
+#include "Emitter.h"
+#include "Listener.h"
 
 //ライブラリ読み込み
 #pragma comment(lib, "XAudio2.lib")
 #pragma comment(lib, "X3DAudio.lib")
-
-//エミッター構造体
-struct EmitterSettings{
-
- //エミッター位置
-  X3DAUDIO_VECTOR position_;
- //エミッター速度
-  X3DAUDIO_VECTOR velocity_;
- //エミッター内部半径を指定
-  float innnerRadius = 2.0f;
- //エミッター内部半径の角度を指定
-  float innnerRadiusAngle = X3DAUDIO_PI / 4.0;
- //音の距離減衰スケーリング係数(後勉強)
-  float curveDistanceScaler = 1.0f;
- //ドップラー効果のスケーリング係数(後勉強)
-  float dopplerScaler = 1.0f;
- //音源のチャンネル数を指定
-  uint32_t channelCount = 1;
- //チャンネルごとの方位角を格納する配列へのポインタ(後勉強)
-  float* pChannelAzimuths = nullptr;
-};
-
-struct ListenerSettings{
- //リスナー位置xyz
-	X3DAUDIO_VECTOR position;
- //リスナーの前方方向：方向を表すベクトル
-	X3DAUDIO_VECTOR orientFront;
- //リスナー上方向
-	X3DAUDIO_VECTOR orientTop;
- //リスナー速度
-	X3DAUDIO_VECTOR velocity;
-};
 
 class Sound
 {

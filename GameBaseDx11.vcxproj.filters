@@ -99,6 +99,8 @@
     <ClCompile Include="Sound.cpp">
       <Filter>リソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Emitter.cpp" />
+    <ClCompile Include="Listener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -174,6 +176,8 @@
     <ClInclude Include="Sound.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Emitter.h" />
+    <ClInclude Include="Listener.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
