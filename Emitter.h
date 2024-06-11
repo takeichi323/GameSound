@@ -1,6 +1,6 @@
 #include<x3daudio.h>
 
-/*//エミッター構造体
+//エミッター構造体
 struct EmitterSettings {
 	//エミッター位置
 	X3DAUDIO_VECTOR position_;
@@ -18,18 +18,16 @@ struct EmitterSettings {
 	uint32_t channelCount = 1;
 	//チャンネルごとの方位角を格納する配列へのポインタ(後勉強)
 	float* pChannelAzimuths = nullptr;
-};*/
+};
 
 class Emitter
 {
 public:
-	//ここに書くのはどうだろうか?
-	Emitter(const X3DAUDIO_VECTOR& position, const X3DAUDIO_VECTOR& velocity, float innerRadius = 2.0f, float innerRadiusAngle = X3DAUDIO_PI / 4.0f, 
-		    float curveDistanceScaler = 1.0f, float dopplerScaler = 1.0f, uint32_t channelCount = 1,float* pChannelAzimuths = nullptr);
-	void SetupEmitter(X3DAUDIO_EMITTER& emitter);
+	Emitter(const EmitterSettings& settings);
+	void SetupEmitter(X3DAUDIO_EMITTER& emitter) const;
+
 private:
-	X3DAUDIO_VECTOR position;
-	X3DAUDIO_VECTOR velocity;
+	EmitterSettings settings;
 
 
 };
