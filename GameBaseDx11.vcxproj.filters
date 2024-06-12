@@ -101,6 +101,7 @@
     </ClCompile>
     <ClCompile Include="Emitter.cpp" />
     <ClCompile Include="Listener.cpp" />
+    <ClCompile Include="Sound3DManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -178,6 +179,7 @@
     </ClInclude>
     <ClInclude Include="Emitter.h" />
     <ClInclude Include="Listener.h" />
+    <ClInclude Include="Sound3DManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

@@ -151,6 +151,7 @@
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="Listener.cpp" />
     <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="Sound3DManager.cpp" />
     <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="Sound.h" />
+    <ClInclude Include="Sound3DManager.h" />
     <ClInclude Include="TestScene.h" />
   </ItemGroup>
   <ItemGroup>
