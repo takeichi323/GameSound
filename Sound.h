@@ -10,10 +10,22 @@
 #pragma comment(lib, "X3DAudio.lib")
 /*
  音の減衰計算を行う*/
+struct SoundParameters
+{
+	float frequency; //周波数
+	float volume;    //音量
+	float attenuation;//減衰率
+
+};
 
 
 class Sound
 {
+public:
+	//コンストラクタ
+	Sound();
+	//デストラクタ
+	~Sound();
   //XAudio2の初期化
    bool InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasterVoice);
 

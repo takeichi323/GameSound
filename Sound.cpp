@@ -5,6 +5,14 @@
   その関数、コードがなぜ必要なのかどのように使うのかを書く
   　→自分で見たときに理解できるように。*/
 
+Sound::Sound()
+{
+}
+
+Sound::~Sound()
+{
+}
+
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
 {
 //XAudio2の初期化概要
