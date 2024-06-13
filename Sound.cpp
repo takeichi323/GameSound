@@ -1,6 +1,9 @@
 #include "Sound.h"
 
-
+/*
+  各関数や内容の説明を書く。
+  その関数、コードがなぜ必要なのかどのように使うのかを書く
+  　→自分で見たときに理解できるように。*/
 
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
 {
