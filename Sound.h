@@ -8,6 +8,9 @@
 //ライブラリ読み込み
 #pragma comment(lib, "XAudio2.lib")
 #pragma comment(lib, "X3DAudio.lib")
+/*
+ 音の減衰計算を行う*/
+
 
 class Sound
 {
@@ -18,10 +21,10 @@ class Sound
    bool InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster);
 
    //エミッタの設定
-   void SetupEmitter(X3DAUDIO_EMITTER& emitter, const EmitterSettings& settings);
+   void SetupEmitter(const EmitterSettings& settings);
 
    //リスナーの設定
-   void SetupListener(X3DAUDIO_LISTENER& listener, const ListenerSettings& settings);
+   void SetupListener(const ListenerSettings& settings);
 
    //3Dオーディオ計算関数
    void Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance,X3DAUDIO_LISTENER& dspSettings);

@@ -12,7 +12,8 @@ Sound3DManager::~Sound3DManager()
 bool Sound3DManager::Initialize(X3DAUDIO_HANDLE x3dInstance)
 {
 	
-	return false;
+	//this->x3dInstance = x3dInstance;
+	return true;
 }
 
 void Sound3DManager::SetListenerParameters(const X3DAUDIO_VECTOR& position, const X3DAUDIO_VECTOR& orientFront, const X3DAUDIO_VECTOR& orientTop)

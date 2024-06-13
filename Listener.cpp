@@ -1,7 +1,8 @@
 #include "Listener.h"
 
 
-Listener::Listener(const ListenerSettings& settings):settings(settings)
+Listener::Listener(const ListenerSettings& settings)
+	:settings(settings)
 {
 }
 

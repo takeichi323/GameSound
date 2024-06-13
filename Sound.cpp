@@ -53,15 +53,15 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 	}
 }
 
-void Sound::SetupEmitter(X3DAUDIO_EMITTER& emitter, const EmitterSettings& settings)
+void Sound::SetupEmitter(const EmitterSettings& settings)
 {
-
 }
 
-void Sound::SetupListener(X3DAUDIO_LISTENER& listener, const ListenerSettings& settings)
+void Sound::SetupListener(const ListenerSettings& settings)
 {
-
 }
+
+
 
 
 void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings)
