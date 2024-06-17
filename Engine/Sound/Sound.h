@@ -54,5 +54,7 @@ public:
    //サウンドバッファの作成と再生用関数
    bool CreateAndPlaySourceVoice(IXAudio2* pXAudio2,IXAudio2SourceVoice** ppSourceVoice,
 	                                      WAVEFORMATEX& waveFormat,XAUDIO2_BUFFER& buffer);
+   //サウンドの設定(音の減衰率、音量、周波数)
+   void SetSoundParameters(const SoundParameters& params, float distance);
 };
 

@@ -68,6 +68,12 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 
 void Sound::SetupEmitter(const EmitterSettings& settings)
 {
+	if (!emitter) {
+		emitter = new Emitter(settings);
+	}
+	else {
+		emitter->
+	}
 }
 
 void Sound::SetupListener(const ListenerSettings& settings)
@@ -110,4 +116,8 @@ bool Sound::CreateAndPlaySourceVoice(IXAudio2* pXAudio2, IXAudio2SourceVoice** p
 
 
 	return true;
+}
+
+void Sound::SetSoundParameters(const SoundParameters& params, float distance)
+{
 }
