@@ -24,6 +24,18 @@
       <UniqueIdentifier>{47a6a3f5-8cfd-436b-8d58-beccd108f3f3}</UniqueIdentifier>
       <Extensions>hlsl</Extensions>
     </Filter>
+    <Filter Include="01Engine\ResourceManager\Sound">
+      <UniqueIdentifier>{4ce8968f-9f1f-4c33-b64a-6336b8979b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01Engine\ResourceManager\Sound\Emitter">
+      <UniqueIdentifier>{199375fe-429c-4bfc-ad2b-5bfd3061e0ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01Engine\ResourceManager\Sound\Listener">
+      <UniqueIdentifier>{7b514ba2-4cbf-452d-b20a-b47cf4f0dbbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01Engine\ResourceManager\Sound\Sound3DManager">
+      <UniqueIdentifier>{e15eade7-5286-4030-8f6e-aad76b47f9f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -96,12 +108,18 @@
     <ClCompile Include="Engine\VFX.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>リソース ファイル</Filter>
+    <ClCompile Include="Engine\Sound\Sound.cpp">
+      <Filter>01Engine\ResourceManager\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="Emitter.cpp" />
-    <ClCompile Include="Listener.cpp" />
-    <ClCompile Include="Sound3DManager.cpp" />
+    <ClCompile Include="Engine\Sound\Emitter\Emitter.cpp">
+      <Filter>01Engine\ResourceManager\Sound\Emitter</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Sound\Listener\Listener.cpp">
+      <Filter>01Engine\ResourceManager\Sound\Listener</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Sound\Sound3DManager\Sound3DManager.cpp">
+      <Filter>01Engine\ResourceManager\Sound\Sound3DManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -174,12 +192,18 @@
     <ClInclude Include="Engine\VFX.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>リソース ファイル</Filter>
+    <ClInclude Include="Engine\Sound\Sound.h">
+      <Filter>01Engine\ResourceManager\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="Emitter.h" />
-    <ClInclude Include="Listener.h" />
-    <ClInclude Include="Sound3DManager.h" />
+    <ClInclude Include="Engine\Sound\Emitter\Emitter.h">
+      <Filter>01Engine\ResourceManager\Sound\Emitter</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sound\Listener\Listener.h">
+      <Filter>01Engine\ResourceManager\Sound\Listener</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sound\Sound3DManager\Sound3DManager.h">
+      <Filter>01Engine\ResourceManager\Sound\Sound3DManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

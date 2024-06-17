@@ -2,9 +2,9 @@
 #include<Windows.h>
 #include<x3daudio.h>
 #include<xaudio2.h>
-#include "Emitter.h"
-#include "Listener.h"
-#include "Sound3DManager.h"
+#include "Emitter/Emitter.h"
+#include "Listener/Listener.h"
+#include "Sound3DManager/Sound3DManager.h"
 
 //ƒ‰ƒCƒuƒ‰ƒŠ“Ç‚İ‚İ
 #pragma comment(lib, "XAudio2.lib")
