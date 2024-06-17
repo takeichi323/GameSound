@@ -62,6 +62,8 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 	if (FAILED(hr)) {
 		return false;
 	}
+
+	
 }
 
 void Sound::SetupEmitter(const EmitterSettings& settings)

@@ -4,6 +4,7 @@
 #include<xaudio2.h>
 #include "Emitter.h"
 #include "Listener.h"
+#include "Sound3DManager.h"
 
 //ライブラリ読み込み
 #pragma comment(lib, "XAudio2.lib")
@@ -21,6 +22,15 @@ struct SoundParameters
 
 class Sound
 {
+private:
+	IXAudio2SourceVoice* pSourceVoice;
+	IXAudio2MasteringVoice* pMasteringVoice;
+	X3DAUDIO_HANDLE x3DInstance;
+	X3DAUDIO_HANDLE x3DInstanceMaster;
+
+	Emitter* emitter;
+	Listener* listener;
+	Sound3DManager* sound3DManager;
 public:
 	//コンストラクタ
 	Sound();
