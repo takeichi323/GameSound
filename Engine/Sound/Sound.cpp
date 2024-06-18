@@ -85,8 +85,7 @@ void Sound::SetupListener(const ListenerSettings& settings)
 
 void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings)
 {
-	//仮置き　サイズ変更の可能性あり
-	FLOAT32 matrix[8] = {};
+	
 
 	
 }

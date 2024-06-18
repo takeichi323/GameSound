@@ -16,3 +16,8 @@ void Emitter::SetupEmitter(X3DAUDIO_EMITTER& emitter) const
 	emitter.pChannelAzimuths = settings.pChannelAzimuths;
 
 }
+
+void Emitter::UpdateSettings(const EmitterSettings& newSettings)
+{
+	settings = newSettings;
+}
