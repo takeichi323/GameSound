@@ -17,7 +17,4 @@ void Emitter::SetupEmitter(X3DAUDIO_EMITTER& emitter) const
 
 }
 
-void Emitter::UpdateSettings(const EmitterSettings& newSettings)
-{
-	settings = newSettings;
-}
+

@@ -19,8 +19,7 @@ public:
 	/*関数()const:
 	　    　　関数内の変数が書き換えできなくなる*/
 	void SetupListener(X3DAUDIO_LISTENER& listener) const;
-
-private:
+  //とりあえずpublicに。
 	ListenerSettings settings;
 	
 };

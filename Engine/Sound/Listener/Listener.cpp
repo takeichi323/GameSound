@@ -14,3 +14,5 @@ void Listener::SetupListener(X3DAUDIO_LISTENER& listener) const
 	listener.Velocity = settings.speed;
 }
 
+
+

@@ -5,12 +5,18 @@
   その関数、コードがなぜ必要なのかどのように使うのかを書く
   　→自分で見たときに理解できるように。*/
 
-Sound::Sound()
+Sound::Sound():pSourceVoice(nullptr), pMasteringVoice(nullptr), emitter(nullptr), listener(nullptr), sound3DManager(nullptr)
 {
 }
 
 Sound::~Sound()
 {
+	if (pSourceVoice) {
+		pSourceVoice->DestroyVoice();
+	}
+	delete emitter;
+	delete listener;
+	//CoUninitialize();
 }
 
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
@@ -39,6 +45,8 @@ bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppM
 		return false;
 	}
 
+	pMasteringVoice = *ppMasteringVoice;
+
 	return true;
 }
 
@@ -63,6 +71,7 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 		return false;
 	}
 
+	return true;
 	
 }
 
@@ -72,12 +81,20 @@ void Sound::SetupEmitter(const EmitterSettings& settings)
 		emitter = new Emitter(settings);
 	}
 	else {
-		emitter->
+		//publicにしたのでエラーは消えた(とりあえずアクセス可能)
+		emitter->settings = settings;
 	}
 }
 
 void Sound::SetupListener(const ListenerSettings& settings)
 {
+	if (!listener) {
+		listener = new Listener(settings);
+	}
+	else {
+		//publicにしたのでエラーは消えた(とりあえずアクセス可能)
+		listener->settings = settings;
+	}
 }
 
 
@@ -119,4 +136,18 @@ bool Sound::CreateAndPlaySourceVoice(IXAudio2* pXAudio2, IXAudio2SourceVoice** p
 
 void Sound::SetSoundParameters(const SoundParameters& params, float distance)
 {
+	
+	if (pSourceVoice) {
+		//周波数の設定
+		XAUDIO2_VOICE_DETAILS voiceDetails{};
+		pSourceVoice->GetVoiceDetails(&voiceDetails);
+		float pitch = params.frequency / 44100.0f;//数値は仮（chatGPT案）
+		//SetFrequencyRatio：周波数調整比メソッド
+		pSourceVoice->SetFrequencyRatio(pitch);
+
+		//音量設定
+		//減衰率設定
+		float attenuationFactor = 1.0f / (distance * distance);
+		attenuationFactor = 
+	}
 }

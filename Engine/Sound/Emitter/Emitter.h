@@ -25,9 +25,7 @@ class Emitter
 public:
 	Emitter(const EmitterSettings& settings);
 	void SetupEmitter(X3DAUDIO_EMITTER& emitter) const;
-	void UpdateSettings(const EmitterSettings& newSettings);
-
-private:
+	//‚Æ‚è‚ ‚¦‚¸public‚ÉB
 	EmitterSettings settings;
 
 
