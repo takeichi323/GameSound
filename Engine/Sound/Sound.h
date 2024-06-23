@@ -25,12 +25,12 @@ class Sound
 private:
 	IXAudio2SourceVoice* pSourceVoice;
 	IXAudio2MasteringVoice* pMasteringVoice;
-	X3DAUDIO_HANDLE x3DInstance;
+	X3DAUDIO_HANDLE x3DInstance;// X3DAUDIO_HANDLE のインスタンス
 	X3DAUDIO_HANDLE x3DInstanceMaster;
 
 	Emitter* emitter;
 	Listener* listener;
-	Sound3DManager* sound3DManager;
+	Sound3DManager sound3DManager; // Sound3DManager のインスタンスを追加
 public:
 	//コンストラクタ
 	Sound();
@@ -49,7 +49,9 @@ public:
    void SetupListener(const ListenerSettings& settings);
 
    //3Dオーディオ計算関数
-   void Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance,X3DAUDIO_LISTENER& dspSettings);
+   /*void Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings);*/
+   //
+   void Update3DAudio();
 
    //サウンドバッファの作成と再生用関数
    bool CreateAndPlaySourceVoice(IXAudio2* pXAudio2,IXAudio2SourceVoice** ppSourceVoice,

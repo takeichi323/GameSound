@@ -5,7 +5,7 @@
   その関数、コードがなぜ必要なのかどのように使うのかを書く
   　→自分で見たときに理解できるように。*/
 
-Sound::Sound():pSourceVoice(nullptr), pMasteringVoice(nullptr), emitter(nullptr), listener(nullptr), sound3DManager(nullptr)
+Sound::Sound():pSourceVoice(nullptr), pMasteringVoice(nullptr), emitter(nullptr), listener(nullptr)
 {
 }
 
@@ -100,11 +100,26 @@ void Sound::SetupListener(const ListenerSettings& settings)
 
 
 
-void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings)
+/*void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings)
 {
 	
 
-	
+}*/
+
+void Sound::Update3DAudio()
+{
+	//もしエミッタとリスナーが両方存在していたら
+	if (emitter && listener) {
+	   //X3DAUDIO_EMITTERのインスタンスを生成
+		X3DAUDIO_EMITTER x3dEmitter{};
+	  //X3DAUDIO_LISTENERのインスタンスを生成
+		X3DAUDIO_LISTENER x3dListener{};
+
+		emitter->SetupEmitter(x3dEmitter);
+		listener->SetupListener(x3dListener);
+
+		sound3DManager.Calculate3DAudio(x3DInstance, x3dListener, x3dEmitter, pSourceVoice, pMasteringVoice);
+	}
 }
 
 bool Sound::CreateAndPlaySourceVoice(IXAudio2* pXAudio2, IXAudio2SourceVoice** ppSourceVoice, WAVEFORMATEX& waveFormat, XAUDIO2_BUFFER& buffer)
