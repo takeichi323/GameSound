@@ -160,9 +160,13 @@ void Sound::SetSoundParameters(const SoundParameters& params, float distance)
 		//SetFrequencyRatio：周波数調整比メソッド
 		pSourceVoice->SetFrequencyRatio(pitch);
 
-		//音量設定
-		//減衰率設定
+		// 音量の設定
+		float volumeFactor = std::pow(10.0f, params.volume / 20.0f);
+		pSourceVoice->SetVolume(volumeFactor);
+
+		// 減衰率の設定
 		float attenuationFactor = 1.0f / (distance * distance);
-		attenuationFactor = 
+		attenuationFactor = std::clamp(attenuationFactor, 0.0f, 1.0f); // 過度な減衰を避ける
+		pSourceVoice->SetVolume(volumeFactor * attenuationFactor);
 	}
 }
