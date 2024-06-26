@@ -2,6 +2,8 @@
 #include<Windows.h>
 #include<x3daudio.h>
 #include<xaudio2.h>
+#include<cmath>
+#include<algorithm>
 #include "Emitter/Emitter.h"
 #include "Listener/Listener.h"
 #include "Sound3DManager/Sound3DManager.h"
