@@ -166,6 +166,7 @@ void Sound::SetSoundParameters(const SoundParameters& params, float distance)
 
 		// Œ¸Š—¦‚ÌÝ’è
 		float attenuationFactor = 1.0f / (distance * distance);
+		// Min Max ‚Å‘ã—p‚µ‚Ä‚Ý‚é
 		attenuationFactor = std::clamp(attenuationFactor, 0.0f, 1.0f); // ‰ß“x‚ÈŒ¸Š‚ð”ð‚¯‚é
 		pSourceVoice->SetVolume(volumeFactor * attenuationFactor);
 	}
