@@ -11,8 +11,20 @@
 //ライブラリ読み込み
 #pragma comment(lib, "XAudio2.lib")
 #pragma comment(lib, "X3DAudio.lib")
-/*
- 音の減衰計算を行う*/
+
+//clampのエラーを解消するため・・・
+
+template<typename T>
+const T& clamp(const T& value, const T& low, const T& high) {
+	return std::min(std::max(value, low), high);
+
+	/*std::minとstd::maxを使用
+  与えられた値 value を範囲 [low, high] に制限
+  std::minは最小値を取得し、std::maxは最大値を取得することで、範囲外の値を修正*/
+
+}
+
+/*音の減衰計算を行う*/
 struct SoundParameters
 {
 	float frequency; //周波数
