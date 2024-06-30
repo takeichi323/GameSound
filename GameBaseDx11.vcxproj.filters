@@ -120,6 +120,7 @@
     <ClCompile Include="Engine\Sound\Sound3DManager\Sound3DManager.cpp">
       <Filter>01Engine\ResourceManager\Sound\Sound3DManager</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerinSound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -204,6 +205,7 @@
     <ClInclude Include="Engine\Sound\Sound3DManager\Sound3DManager.h">
       <Filter>01Engine\ResourceManager\Sound\Sound3DManager</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerinSound.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

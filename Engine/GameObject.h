@@ -6,6 +6,7 @@
 #include "SphereCollider.h"
 #include "BoxCollider.h"
 #include "Transform.h"
+#include "Sound/Sound.h"
 
 
 
@@ -148,12 +149,19 @@ public:
 	void SetScale(XMFLOAT3 scale) { transform_.scale_ = scale; }
 	void SetScale(float x, float y, float z) { SetScale(XMFLOAT3(x, y, z)); }
 
+	/*サウンド関連*/
+	void PlaySound();
+
 
 private:
 
 	//オブジェクト削除（再帰）
 	//引数：obj　削除するオブジェクト
 	void KillObjectSub(GameObject* obj);
+
+	/*サウンド関連*/
+	Sound sound;
+	SoundParameters soundParams;
 
 
 private:

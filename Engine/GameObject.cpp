@@ -29,6 +29,10 @@ GameObject::GameObject(GameObject * parent, const std::string& name)
 	if(parent)
 		transform_.pParent_ = &parent->transform_;
 
+	// サウンドの初期化
+	sound.InitializeXAudio2(&sound.pXAudio2, &sound.pMasteringVoice);
+	sound.InitializeX3DAudio(&sound.x3DInstance, &sound.x3DInstanceMaster);
+
 }
 
 //デストラクタ
@@ -190,6 +194,10 @@ void GameObject::KillAllChildren(void)
 
 	//リストをクリア
 	childList_.clear();
+}
+
+void GameObject::PlaySound()
+{
 }
 
 //オブジェクト削除（再帰）
