@@ -33,6 +33,7 @@ GameObject::GameObject(GameObject * parent, const std::string& name)
 	sound.InitializeXAudio2(&sound.ppXAudio2, &sound.pMasteringVoice);
 	sound.InitializeX3DAudio(&sound.x3DInstance, &sound.x3DInstanceMaster);
 
+
 	
 }
 
