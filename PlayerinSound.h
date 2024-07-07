@@ -1,11 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Engine/Sound/Sound.h"
 
 //◆◆◆を管理するクラス
 class PlayerinSound : public GameObject
 {
-
+private:
     int hModel_;    //モデル番号
+    //Soundクラスのインスタンス
+    Sound sound_;
 
 public:
     //コンストラクタ
@@ -25,5 +28,8 @@ public:
 
     //開放
     void Release() override;
+
+    //音声のロードと再生
+    void LoadPlaySound(const std::string& filename);
 };
 

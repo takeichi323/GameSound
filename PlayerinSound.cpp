@@ -36,3 +36,7 @@ void PlayerinSound::Draw()
 void PlayerinSound::Release()
 {
 }
+
+void PlayerinSound::LoadPlaySound(const std::string& filename)
+{
+}
