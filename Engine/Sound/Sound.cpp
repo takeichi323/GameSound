@@ -171,3 +171,13 @@ void Sound::SetSoundParameters(const SoundParameters& params, float distance)
 		pSourceVoice->SetVolume(volumeFactor * attenuationFactor);
 	}
 }
+
+IXAudio2* Sound::GetXAudio2() const
+{
+	return pXAudio2;
+}
+
+void Sound::SetSourceVoice(IXAudio2SourceVoice* pSourceVoice_)
+{
+	pSourceVoice = pSourceVoice_;
+}

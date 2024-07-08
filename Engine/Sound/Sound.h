@@ -37,6 +37,7 @@ struct SoundParameters
 class Sound
 {
 private:
+	IXAudio2* pXAudio2;
 	IXAudio2SourceVoice* pSourceVoice;
 	IXAudio2MasteringVoice* pMasteringVoice;
 	X3DAUDIO_HANDLE x3DInstance;// X3DAUDIO_HANDLE のインスタンス
@@ -72,5 +73,8 @@ public:
 	                                      WAVEFORMATEX& waveFormat,XAUDIO2_BUFFER& buffer);
    //サウンドの設定(音の減衰率、音量、周波数)
    void SetSoundParameters(const SoundParameters& params, float distance);
+
+   IXAudio2* GetXAudio2()const;
+   void SetSourceVoice(IXAudio2SourceVoice* pSourceVoice_);
 };
 
