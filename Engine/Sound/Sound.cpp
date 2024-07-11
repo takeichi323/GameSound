@@ -16,7 +16,14 @@ Sound::~Sound()
 	}
 	delete emitter;
 	delete listener;
-	//CoUninitialize();
+
+	if (pMasteringVoice) {
+		pMasteringVoice->DestroyVoice();
+	}
+	if (pXAudio2) {
+		pXAudio2->Release();
+	}
+	CoUninitialize();
 }
 
 bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasteringVoice)
@@ -45,6 +52,7 @@ bool Sound::InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppM
 		return false;
 	}
 
+	//pXAudio2 = *ppXAudio2;
 	pMasteringVoice = *ppMasteringVoice;
 
 	return true;
@@ -54,6 +62,7 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 {
 	//エラーを返す
 	 HRESULT hr{};
+
 
 	//X3DAudioインスタンスを作成
 	X3DAUDIO_HANDLE x3dInstance{};
@@ -97,14 +106,6 @@ void Sound::SetupListener(const ListenerSettings& settings)
 	}
 }
 
-
-
-
-/*void Sound::Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings)
-{
-	
-
-}*/
 
 void Sound::Update3DAudio()
 {
@@ -180,4 +181,9 @@ IXAudio2* Sound::GetXAudio2() const
 void Sound::SetSourceVoice(IXAudio2SourceVoice* pSourceVoice_)
 {
 	pSourceVoice = pSourceVoice_;
+}
+
+void Sound::LoadSound(const std::string& filename, bool isLoop)
+{
+	
 }

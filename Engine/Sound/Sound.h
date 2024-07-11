@@ -7,6 +7,7 @@
 #include "Emitter/Emitter.h"
 #include "Listener/Listener.h"
 #include "Sound3DManager/Sound3DManager.h"
+#include <string>
 
 //ライブラリ読み込み
 #pragma comment(lib, "XAudio2.lib")
@@ -51,30 +52,36 @@ public:
 	Sound();
 	//デストラクタ
 	~Sound();
-  //XAudio2の初期化
-   bool InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasterVoice);
 
+   //XAudio2の初期化
+   bool InitializeXAudio2(IXAudio2** ppXAudio2, IXAudio2MasteringVoice** ppMasterVoice);
    //X3DAudioの初期化
    bool InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* pX3DInstanceMaster);
+   //全体の初期化
+   void AllInitialize();
 
    //エミッタの設定
    void SetupEmitter(const EmitterSettings& settings);
-
    //リスナーの設定
    void SetupListener(const ListenerSettings& settings);
-
-   //3Dオーディオ計算関数
-   /*void Calculate3DAudio(X3DAUDIO_HANDLE x3DInstance, X3DAUDIO_LISTENER& dspSettings);*/
-   //
    void Update3DAudio();
 
    //サウンドバッファの作成と再生用関数
    bool CreateAndPlaySourceVoice(IXAudio2* pXAudio2,IXAudio2SourceVoice** ppSourceVoice,
-	                                      WAVEFORMATEX& waveFormat,XAUDIO2_BUFFER& buffer);
+                                    WAVEFORMATEX& waveFormat,XAUDIO2_BUFFER& buffer);
    //サウンドの設定(音の減衰率、音量、周波数)
    void SetSoundParameters(const SoundParameters& params, float distance);
 
    IXAudio2* GetXAudio2()const;
    void SetSourceVoice(IXAudio2SourceVoice* pSourceVoice_);
+
+  
+   //再生
+   void Play();
+   //停止
+   void Stop();
+   //ロード
+   void LoadSound(const std::string& filename, bool isLoop = false);
+
 };
 
