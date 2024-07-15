@@ -1,4 +1,6 @@
 #include "Sound.h"
+#include <iostream>
+#include "../Global.h"
 
 /*
   各関数や内容の説明を書く。
@@ -185,5 +187,94 @@ void Sound::SetSourceVoice(IXAudio2SourceVoice* pSourceVoice_)
 
 void Sound::LoadSound(const std::string& filename, bool isLoop)
 {
-	
+	//ファイルを開く
+	HANDLE hFile = CreateFile(filename.c_str(), GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	if (hFile == INVALID_HANDLE_VALUE) {
+		// エラーログを出力
+		std::cerr << "Failed to open file: " << filename << std::endl;
+		return;
+	}
+	DWORD dwBytes;
+	//チャンク構造体
+	struct Chunk
+	{
+		char	id[5] = ""; 			// ID
+		unsigned int	size = 0;	// サイズ
+	};
+	Chunk riffChunk = {};
+	// RIFFチャンクIDを読み取る
+	ReadFile(hFile, &riffChunk.id, 4, &dwBytes, NULL);
+	// RIFFチャンクのサイズを読み取る
+	ReadFile(hFile, &riffChunk.size, 4, &dwBytes, NULL);
+	char wave[4] = {};
+	// WAVEフォーマットであることを確認するために "WAVE" 文字列を読み取る
+	ReadFile(hFile, &wave, 4, &dwBytes, NULL);
+
+	Chunk formatChunk = {};
+	// フォーマットチャンクを見つけるためにループする
+	while (formatChunk.id[0] != 'f') {
+		ReadFile(hFile, &formatChunk.id, 4, &dwBytes, NULL);
+	}
+	// フォーマットチャンクのサイズを読み取る
+	ReadFile(hFile, &formatChunk.size, 4, &dwBytes, NULL);
+
+	WAVEFORMATEX fmt = {};
+	// WAVEフォーマットタグを読み取る
+	ReadFile(hFile, &fmt.wFormatTag, 2, &dwBytes, NULL);
+	// チャネル数を読み取る
+	ReadFile(hFile, &fmt.nChannels, 2, &dwBytes, NULL);
+	// サンプルレートを読み取る
+	ReadFile(hFile, &fmt.nSamplesPerSec, 4, &dwBytes, NULL);
+	// 平均バイト数を読み取る
+	ReadFile(hFile, &fmt.nAvgBytesPerSec, 4, &dwBytes, NULL);
+	// ブロックアラインを読み取る
+	ReadFile(hFile, &fmt.nBlockAlign, 2, &dwBytes, NULL);
+	// サンプルあたりのビット数を読み取る
+	ReadFile(hFile, &fmt.wBitsPerSample, 2, &dwBytes, NULL);
+
+	Chunk dataChunk = {};
+	// データチャンクを見つけるためにループする
+	while (true) {
+		ReadFile(hFile, &dataChunk.id, 4, &dwBytes, NULL);
+		if (strcmp(dataChunk.id, "data") == 0) {
+			break;
+		}
+		else {
+			// データチャンクのサイズを読み取る
+			ReadFile(hFile, &dataChunk.size, 4, &dwBytes, NULL);
+			// チャンクのデータを一時バッファに読み込む
+			char* pBuffer = new char[dataChunk.size];
+			ReadFile(hFile, pBuffer, dataChunk.size, &dwBytes, NULL);
+			delete[] pBuffer;
+		}
+	}
+	// データチャンクのサイズを読み取る
+	ReadFile(hFile, &dataChunk.size, 4, &dwBytes, NULL);
+
+	// データチャンクのデータをバッファに読み込む
+	char* pBuffer = new char[dataChunk.size];
+	ReadFile(hFile, pBuffer, dataChunk.size, &dwBytes, NULL);
+	CloseHandle(hFile); // ファイルハンドルを閉じる
+
+	// XAudio2用のバッファを設定
+	XAUDIO2_BUFFER buffer = {};
+	buffer.AudioBytes = dataChunk.size; // オーディオデータのサイズを設定
+	buffer.pAudioData = reinterpret_cast<BYTE*>(pBuffer); // オーディオデータへのポインタを設定
+	buffer.Flags = XAUDIO2_END_OF_STREAM; // バッファの終了を示すフラグ
+	buffer.LoopCount = isLoop ? XAUDIO2_LOOP_INFINITE : 0; // ループ回数を設定
+
+	// WAVEフォーマットの詳細を設定
+	WAVEFORMATEX waveFormat = {};
+	waveFormat.wFormatTag = fmt.wFormatTag; // フォーマットタグ
+	waveFormat.nChannels = fmt.nChannels; // チャネル数
+	waveFormat.nSamplesPerSec = fmt.nSamplesPerSec; // サンプルレート
+	waveFormat.nAvgBytesPerSec = fmt.nAvgBytesPerSec; // 平均バイト数
+	waveFormat.nBlockAlign = fmt.nBlockAlign; // ブロックアライン
+	waveFormat.wBitsPerSample = fmt.wBitsPerSample; // サンプルあたりのビット数
+
+	// ソースボイスを作成し、オーディオデータを再生する
+	if (CreateAndPlaySourceVoice(pXAudio2, &pSourceVoice, waveFormat, buffer)) {
+		pSourceVoice->Start(0); // ソースボイスの再生を開始
+	}
+	SAFE_DELETE_ARRAY(pBuffer); // バッファのメモリを解放
 }
