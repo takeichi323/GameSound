@@ -14,7 +14,7 @@
 #pragma comment(lib, "X3DAudio.lib")
 
 //clampのエラーを解消するため・・・
-
+//7/17現在以下のコード自体にエラーが発生
 template<typename T>
 const T& clamp(const T& value, const T& low, const T& high) {
 	return std::min(std::max(value, low), high);
@@ -77,11 +77,11 @@ public:
 
   
    //再生
-   void Play();
+   void Play(int ID);
    //停止
    void Stop();
    //ロード
-   void LoadSound(const std::string& filename, bool isLoop = false);
+   int LoadSound(const std::string& filename, bool isLoop = false);
 
 };
 

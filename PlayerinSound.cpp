@@ -1,9 +1,11 @@
 #include "PlayerinSound.h"
 #include "Engine/Model.h"
+#include "Engine/Sound/Sound.h"
+#include "Engine/Audio.h"
 
 //コンストラクタ
 PlayerinSound::PlayerinSound(GameObject* parent)
-    :GameObject(parent, "PlayerinSound"), hModel_(-1)
+    :GameObject(parent, "PlayerinSound"), hModel_(-1),hSound_(-1)
 {
 }
 
@@ -20,20 +22,26 @@ void PlayerinSound::Initialize()
     assert(hModel_ >= 0);
 
  /*--------------------仮------------------*/
+//GameObjectクラスで行っている
     //それぞれの初期化している関数を呼び出す
     
+    //sound_.AllInitialize();
+   /* 　2つの初期化
+          ↓*/
     //XAudio2の初期化
-    sound_.InitializeXAudio2(/*引数書く*/);
+    //sound_.InitializeXAudio2(/*引数書く*/);
     //X3DAudioの初期化
-    sound_.InitializeX3DAudio(/*引数書く*/);
+    //sound_.InitializeX3DAudio(/*引数書く*/);
    /*----------------------------------------*/
+
+    //3Dサウンドロード
+    hSound_=sound_.LoadSound("ファイル名");
+    assert(hSound_ >= 0);
 }
 
 //更新
 void PlayerinSound::Update()
 {
-    //エミッターの位置を更新
-    sound_.SetupEmitter(/*引数書く*/);
 }
 
 //描画
@@ -41,6 +49,11 @@ void PlayerinSound::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
+
+    //サウンド再生
+    sound_.Play(hSound_);
+
+    
 }
 
 //開放

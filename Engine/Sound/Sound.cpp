@@ -86,6 +86,12 @@ bool Sound::InitializeX3DAudio(X3DAUDIO_HANDLE* pX3DInstance, X3DAUDIO_HANDLE* p
 	
 }
 
+void Sound::AllInitialize()
+{
+	InitializeXAudio2(NULL,NULL/*引数入れる*/);
+	InitializeX3DAudio(NULL, NULL/*引数入れる*/);
+}
+
 void Sound::SetupEmitter(const EmitterSettings& settings)
 {
 	if (!emitter) {
@@ -185,15 +191,25 @@ void Sound::SetSourceVoice(IXAudio2SourceVoice* pSourceVoice_)
 	pSourceVoice = pSourceVoice_;
 }
 
-void Sound::LoadSound(const std::string& filename, bool isLoop)
+void Sound::Play(int ID)
+{
+	if (pSourceVoice) {
+		HRESULT hr = pSourceVoice->Start(0);
+		if (FAILED(hr)) {
+			std::cerr << "Failed to play 3D sound" << std::endl;
+		}
+	}
+}
+
+int Sound::LoadSound(const std::string& filename, bool isLoop)
 {
 	//ファイルを開く
 	HANDLE hFile = CreateFile(filename.c_str(), GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-	if (hFile == INVALID_HANDLE_VALUE) {
+	/*if (hFile == INVALID_HANDLE_VALUE) {
 		// エラーログを出力
 		std::cerr << "Failed to open file: " << filename << std::endl;
 		return;
-	}
+	}*/
 	DWORD dwBytes;
 	//チャンク構造体
 	struct Chunk

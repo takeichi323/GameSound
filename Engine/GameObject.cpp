@@ -29,9 +29,9 @@ GameObject::GameObject(GameObject * parent, const std::string& name)
 	if(parent)
 		transform_.pParent_ = &parent->transform_;
 
-	// サウンドの初期化
-	sound.InitializeXAudio2(&sound.ppXAudio2, &sound.pMasteringVoice);
-	sound.InitializeX3DAudio(&sound.x3DInstance, &sound.x3DInstanceMaster);
+	// 3Dサウンドの初期化
+	sound.AllInitialize();
+	
 
 
 	

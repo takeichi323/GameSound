@@ -10,6 +10,9 @@ private:
     //Soundクラスのインスタンス
     Sound sound_;
 
+    //サウンド番号
+    int hSound_;
+
 public:
     //コンストラクタ
     PlayerinSound(GameObject* parent);
