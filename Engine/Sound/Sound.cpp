@@ -201,6 +201,15 @@ void Sound::Play(int ID)
 	}
 }
 
+void Sound::Stop()
+{
+	/*
+	 オブジェクトに取り込む音なので停止は保留
+	 距離によって音の大きさを変えているので、
+	 自分の位置からある程度離れると勝手に音は消える(はず)。
+	*/
+}
+
 int Sound::LoadSound(const std::string& filename, bool isLoop)
 {
 	//ファイルを開く
@@ -293,4 +302,5 @@ int Sound::LoadSound(const std::string& filename, bool isLoop)
 		pSourceVoice->Start(0); // ソースボイスの再生を開始
 	}
 	SAFE_DELETE_ARRAY(pBuffer); // バッファのメモリを解放
+	/*return：値を返す*/
 }
