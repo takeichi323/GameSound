@@ -174,9 +174,8 @@ void Sound::SetSoundParameters(const SoundParameters& params, float distance)
 		pSourceVoice->SetVolume(volumeFactor);
 
 		// 減衰率の設定
-		 float attenuationFactor = 1.0f / (distance * distance);
-		// Min Max で代用してみる
-		attenuationFactor = clamp(attenuationFactor, 0.0f, 1.0f); // 過度な減衰を避ける
+		float attenuationFactor = 1.0f / (distance * distance);
+		attenuationFactor = (attenuationFactor < 0.0f) ? 0.0f : (attenuationFactor > 1.0f) ? 1.0f : attenuationFactor; // 過度な減衰を避ける
 		pSourceVoice->SetVolume(volumeFactor * attenuationFactor);
 	}
 }
@@ -303,4 +302,5 @@ int Sound::LoadSound(const std::string& filename, bool isLoop)
 	}
 	SAFE_DELETE_ARRAY(pBuffer); // バッファのメモリを解放
 	/*return：値を返す*/
+	return 0;
 }

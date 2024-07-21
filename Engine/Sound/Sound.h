@@ -15,15 +15,14 @@
 
 //clampのエラーを解消するため・・・
 //7/17現在以下のコード自体にエラーが発生
-template<typename T>
-const T& clamp(const T& value, const T& low, const T& high) {
-	return std::min(std::max(value, low), high);
+ /*template<typename T>
+    const T& clamp(const T& value, const T& low, const T& high) {
+        return std::min(std::max(value, low), high);*/
 
 	/*std::minとstd::maxを使用
   与えられた値 value を範囲 [low, high] に制限
   std::minは最小値を取得し、std::maxは最大値を取得することで、範囲外の値を修正*/
-
-}
+//}
 
 /*音の減衰計算を行う*/
 struct SoundParameters
@@ -81,7 +80,7 @@ public:
    //停止
    void Stop();
    //ロード
-   int LoadSound(const std::string& filename, bool isLoop = false);
+  int LoadSound(const std::string& filename, bool isLoop = false);
 
 };
 
