@@ -7,7 +7,7 @@
   その関数、コードがなぜ必要なのかどのように使うのかを書く
   　→自分で見たときに理解できるように。*/
 
-Sound::Sound():pSourceVoice(nullptr), pMasteringVoice(nullptr), emitter(nullptr), listener(nullptr)
+Sound::Sound():pXAudio2(nullptr),pSourceVoice(nullptr), pMasteringVoice(nullptr), emitter(nullptr), listener(nullptr)
 {
 }
 
