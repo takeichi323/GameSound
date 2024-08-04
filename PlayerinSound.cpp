@@ -18,7 +18,7 @@ PlayerinSound::~PlayerinSound()
 void PlayerinSound::Initialize()
 {
     //モデルデータのロード
-    hModel_ = Model::Load("ファイル名");
+    hModel_ = Model::Load("BoxCollider.fbx");
     assert(hModel_ >= 0);
 
  /*--------------------仮------------------*/
@@ -35,7 +35,7 @@ void PlayerinSound::Initialize()
    /*----------------------------------------*/
 
     //3Dサウンドロード
-    hSound_=sound_.LoadSound("ファイル名");
+    hSound_=sound_.LoadSound("footsteps.wav");
     assert(hSound_ >= 0);
 }
 
