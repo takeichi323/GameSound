@@ -2,6 +2,11 @@
 #include "Engine/Model.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Audio.h"
+/*
+ 8/10
+  ファイルのエラーが発生
+  設定を見直す
+  ゲーム開発に戻る*/
 
 //コンストラクタ
 PlayerinSound::PlayerinSound(GameObject* parent)
